@@ -3,10 +3,10 @@ import 'package:http/http.dart' as http;
 import 'user_model.dart';
 
 class ApiService {
-  static const String _baseUrl = 'https://parseapi.back4app.com/classes/Tarefas';
-  static const String _appId = 'kmiiMzHmOqLIh9nYfPcLOWStmNbyx4t4mNG6KxZk';  // Substitua por seu APP_ID
-  static const String _restApiKey = '2iKcDr8QRuiHFK9NTL0NK8XJHRPOt7rAq7csgWHb';  // Substitua por seu REST_API_KEY
-
+  static const String _baseUrl =
+      'https://parseapi.back4app.com/classes/Tarefas';
+  static const String _appId = 'kmiiMzHmOqLIh9nYfPcLOWStmNbyx4t4mNG6KxZk';
+  static const String _restApiKey = '2iKcDr8QRuiHFK9NTL0NK8XJHRPOt7rAq7csgWHb';
   static Future<List<User>> getUsers() async {
     final response = await http.get(
       Uri.parse(_baseUrl),
@@ -20,7 +20,7 @@ class ApiService {
       final data = json.decode(response.body)['results'] as List;
       return data.map((json) => User.fromJson(json)).toList();
     } else {
-      throw Exception('Failed to load users');
+      throw Exception('Erro ao carregar usuários');
     }
   }
 
@@ -36,7 +36,7 @@ class ApiService {
     );
 
     if (response.statusCode != 201) {
-      throw Exception('Failed to create user');
+      throw Exception('Erro ao criar usuário');
     }
   }
 
@@ -52,7 +52,7 @@ class ApiService {
     );
 
     if (response.statusCode != 200) {
-      throw Exception('Failed to update user');
+      throw Exception('Erro ao atualizar usuário');
     }
   }
 
@@ -66,7 +66,7 @@ class ApiService {
     );
 
     if (response.statusCode != 200) {
-      throw Exception('Failed to delete user');
+      throw Exception('Erro ao deletar usuário');
     }
   }
 }
